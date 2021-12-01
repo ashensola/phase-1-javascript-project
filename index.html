@@ -1,0 +1,58 @@
+  <!DOCTYPE html>
+
+  <html lang="en">
+    <head>
+      <title>Weather Report</title>
+    <link rel="stylesheet" href="style.css">
+<script src="fetch.js" defer></script>     <!-- "defer" required for addeventListener to work -->
+            <script src="https://kit.fontawesome.com/4a9ee9bb34.js" crossorigin="anonymous"></script>
+            </head>
+            
+    <body>
+
+  
+      
+    <header id="header">
+      <div class="wrapper">
+            <h1>Welcome to the Weather Page!</h1>
+          </div>
+      </header> 
+
+    <div id="imgcontainer"><img src="https://live.staticflickr.com/5578/14542734224_759b8ce227_k.jpg" alt="scenary" width="2400" height="400">
+    </div>
+    
+<div id="searchcontainer">
+      
+      <p id="text1">Enter Your Location</p>
+      <input type="text" id="search" class="form" placeholder="location" maxlength="49" />
+      <a id="search-btn" href="#" ></a>
+        <button class="btn"><i class="fas fa-search"></i></button>
+   
+    </div>
+
+    <div class="toggle">
+      <p id="text1">Toggle for Imperial Units</p>
+    <label class="switch">
+      <input type="checkbox" class="btn2" >
+      <span class="slider round"></span>
+    </label>
+ </div>
+
+  <div id="currentweather">
+    <p class ="city"> Enter Location to get Started </p>
+    <p class ="country"> </p>
+
+    <div id="temps">
+      <p class="temp"> </p>
+   <img src="" alt="" class= "icon">
+    <div class="desc">   </div>
+    <div class ="humidity"> </div>
+    <div class="wind"></div> 
+    </div>
+
+  </div>
+
+
+
+    </body>
+
