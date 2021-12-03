@@ -17,6 +17,9 @@ function createTable(city,tempDays,windDays,descDays){
     
     let createtableBtn=document.querySelector(".btn1");
     createtableBtn.addEventListener("click",function() {
+        createtableBtn.disabled=true;
+     //   resettableButton();
+    
     let table=document.createElement('table');
     let headerRow=document.createElement('tr');
 
@@ -34,6 +37,7 @@ colHeaders=["Temperature", "Wind", "Description"]
 for (i=0;i<colHeaders.length;i++){
  
 let row = document.createElement("tr");
+row.setAttribute("id", colHeaders[i]);
 let titleCell=document.createElement('th');
 let titlenodeCell=document.createTextNode(colHeaders[i]);
 titleCell.appendChild(titlenodeCell);
@@ -43,22 +47,48 @@ myTable.appendChild(table);
 
 
 }
-//tempDays.forEach(tempDay=> {
-// let temperatureRow=document.querySelector("th")
-// let temperatureCell=document.createElement("td");
-// let temperatureVal=document.createTextNode(tempDay);
-// temperatureCell.appendChild(temperatureVal);
-// temperatureRow.appendChild(temperatureCell);
-// table.appendChild(temperatureRow);
-// myTable.appendChild(table);
+tempDays.forEach(tempDay=> {
+let temperatureRow=document.getElementById("Temperature")
+let temperatureCell=document.createElement("td");
+let temperatureVal=document.createTextNode(tempDay);
+temperatureCell.appendChild(temperatureVal);
+temperatureRow.appendChild(temperatureCell);
+table.appendChild(temperatureRow);
+myTable.appendChild(table);
 
-// })
+})
+
+windDays.forEach(windDay=> {
+    let windRow=document.getElementById("Wind")
+    let windCell=document.createElement("td");
+    let windVal=document.createTextNode(windDay);
+    windCell.appendChild(windVal);
+    windRow.appendChild(windCell);
+    table.appendChild(windRow);
+    myTable.appendChild(table);
+    
+    })
+
+    descDays.forEach(descDay=> {
+        let descRow=document.getElementById("Description")
+        let descCell=document.createElement("td");
+        let descVal=document.createTextNode(descDay);
+        descCell.appendChild(descVal);
+        descRow.appendChild(descCell);
+        table.appendChild(descRow);
+        myTable.appendChild(table);
+        
+        })
+let resetbtn=document.querySelector(".btn");
+resetbtn.addEventListener("click",function() {
+    createtableBtn.disabled=false; //
+    remove(myTable)
+    
+})
 
 
 });
 
-
-console.log(tempDays[0],windDays[0],descDays[0]);
 
 
 
@@ -97,3 +127,8 @@ createTable(city,tempDays,windDays,descDays);
 
 
 });
+
+function remove(el) {
+    var element = el;
+    element.remove();
+  }
