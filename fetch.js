@@ -34,12 +34,42 @@ const {speed} = data.wind;
 
 let btn2=document.querySelector(".btn2");
 
+let myDiv=document.createElement("div");
+myDiv.id="currentweather";
+document.getElementsByTagName('body')[0].appendChild(myDiv);
+let myDivs = document.getElementById("currentweather");
+let pCity=document.createElement("p")
+pCity.className="city";
+let pCountry=document.createElement("p")
+pCountry.className="country";
+let pTemp=document.createElement("p");
+pTemp.className="temp";
+let imgElement=document.createElement("img");
+imgElement.className="icon";
+let pDesc=document.createElement("p");
+pDesc.className="desc";
+let pHumidity=document.createElement("p");
+pHumidity.className="humidity";
+let pWind=document.createElement("p");
+pWind.className="wind";
+
+
+myDivs.appendChild(pCity);
+myDivs.appendChild(pCountry);
+myDivs.appendChild(pTemp);
+myDivs.appendChild(imgElement);
+myDivs.appendChild(pDesc);
+myDivs.appendChild(pHumidity);
+myDivs.appendChild(pWind);
+
+
+
 
 document.querySelector(".city").innerText="Weather in " + name;
 document.querySelector(".country").innerText=country;
 document.querySelector(".temp").innerText=newTemp + " ⁰C";
-document.querySelector(".desc").innerText=description;
 document.querySelector(".icon").src ="https://openweathermap.org/img/wn/"+ icon+"@2x.png";
+document.querySelector(".desc").innerText=description;
 document.querySelector(".humidity").innerText="Humidity: "+humidity +"%";
 document.querySelector(".wind").innerText=speed +  " m/s"
 
@@ -67,15 +97,21 @@ else{
 }
 })
 }
+
 function searchLocation(){
     collectData(document.querySelector(".form").value)
 }
 
+function searchFunction(){
+
+
 let btn=document.querySelector(".btn");
 btn.addEventListener("click",function() {
     searchLocation();
-
+    btn.disabled=true;
 });
+}
+
 
 let form=document.querySelector(".form");
 form.addEventListener("keyup",function(event) {
@@ -84,14 +120,4 @@ form.addEventListener("keyup",function(event) {
     }
 });
 
-
-// let btn2=document.querySelector(".btn2");
-// btn2.addEventListener("change",function(){
-// if(btn2.checked ===true){
-//     console.log("It is true");
-// }
-// else{
-//     console.log("It is false");
-
-// }
-// })
+searchFunction();
