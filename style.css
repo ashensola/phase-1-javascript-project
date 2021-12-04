@@ -94,7 +94,7 @@ img{
     -webkit-transition: .4s;
     transition: .4s;
   }
-  
+
   .slider:before {
     position: absolute;
     content: "";
@@ -228,4 +228,13 @@ table th {
   text-align: left;
   background-color: #000000d0;
   color: white;
+}
+
+.add1{
+  position: absolute;
+  top: 800px;
+  right: 880px;
+  display:block;
+  text-align: center;
+margin: 10px;
 }
