@@ -4,14 +4,13 @@
     <head>
       <title>Weather Report</title>
     <link rel="stylesheet" href="style.css">
-<script src="fetch.js" defer></script>     <!-- "defer" required for addeventListener to work -->
+ <script src="fetch.js" defer></script>    <!-- "defer" required for addeventListener to work -->
+<script src="fetchjson.js" defer ></script>
             <script src="https://kit.fontawesome.com/4a9ee9bb34.js" crossorigin="anonymous"></script>
             </head>
             
-    <body>
-
+    <body id="body">
   
-      
     <header id="header">
       <div class="wrapper">
             <h1>Welcome to the Weather Page!</h1>
@@ -27,6 +26,9 @@
       <input type="text" id="search" class="form" placeholder="location" maxlength="49" />
       <a id="search-btn" href="#" ></a>
         <button class="btn"><i class="fas fa-search"></i></button>
+        <button class="btn1"><i class="far fa-thumbs-up"></i></button>
+        <button class="resetbtn">  <a href="javascript:location.reload(true)">Reset</a>  </button>
+
    
     </div>
 
@@ -38,20 +40,24 @@
     </label>
  </div>
 
-  <div id="currentweather">
+  <!-- <div id="currentweather">
     <p class ="city"> Enter Location to get Started </p>
     <p class ="country"> </p>
 
-    <div id="temps">
+    <div id="temps"> </div>
       <p class="temp"> </p>
    <img src="" alt="" class= "icon">
     <div class="desc">   </div>
     <div class ="humidity"> </div>
-    <div class="wind"></div> 
-    </div>
+    <div class="wind"></div>  -->
+   
+
 
   </div>
 
+<div id="table-container">
+
+</div>
 
 
     </body>
