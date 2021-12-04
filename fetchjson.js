@@ -1,5 +1,3 @@
-
-
 function fetchRestAPI(cityName){
     let defaultcityName=cityName.toLowerCase();
     console.log(defaultcityName);
@@ -16,8 +14,11 @@ function fetchRestAPI(cityName){
 }
 
 
-function createTable(city,tempDays,windDays,descDays){
-    myTable=document.querySelector("#table-container")
+    myTable=document.querySelector("#table-container");
+    let table=document.createElement('table');
+
+function createTable(city,tempDays,windDays,descDays,myTable,table){
+    let events=["","",""];
     let headers=[city,'Day 1', 'Day 2', 'Day 3']
     
     // let createtableBtn=document.querySelector(".btn1");
@@ -25,7 +26,6 @@ function createTable(city,tempDays,windDays,descDays){
         //createtableBtn.disabled=true;
      //   resettableButton();
 
-    let table=document.createElement('table');
     let headerRow=document.createElement('tr');
 ////let resetbtn=document.querySelector(".btn2")
 //resetbtn.addEventListener("click",function() {
@@ -43,8 +43,8 @@ function createTable(city,tempDays,windDays,descDays){
    table.appendChild(headerRow);
     myTable.appendChild(table);
 ///add title columns///
-colHeaders=["Temperature", "Wind", "Description"]
-for (i=0;i<colHeaders.length;i++){
+colHeaders=["Temperature", "Wind", "Description"];
+for (let i=0;i<(colHeaders.length);i++){
  
 let row = document.createElement("tr");
 row.setAttribute("id", colHeaders[i]);
@@ -91,11 +91,27 @@ windDays.forEach(windDay=> {
         })
 
 
-//});
+}
 
-
-
-
+function addnewRow(myTable,table){
+events=[" "," "," "];
+let newRow = document.createElement("tr");
+newRow.setAttribute("id", "Events");
+let newrowCell=document.createElement('th');
+let newtitlenodeCell=document.createTextNode("Events");
+newrowCell.appendChild(newtitlenodeCell);
+newRow.appendChild(newrowCell);
+table.appendChild(newRow);
+myTable.appendChild(table);
+    events.forEach(event=> {
+        let addnewRow=document.getElementById("Events")
+        let addCell=document.createElement("td");
+        let eventVal=document.createTextNode(event);
+        addCell.appendChild(eventVal);
+        addnewRow.appendChild(addCell);
+        table.appendChild(addnewRow);
+        myTable.appendChild(table);
+})
 }
 
 
@@ -165,7 +181,9 @@ createtableBtn.addEventListener("click",function() {
 createtableBtn.disabled=true;
 imperialButton.disabled=true;
 
-createTable(city,tempDays,windDays,descDays);
+createTable(city,tempDays,windDays,descDays,myTable,table);
+createButtons();
+//addnewRow(myTable,table);
 
 })
 
@@ -173,43 +191,40 @@ imperialButton.addEventListener("click",function() {
    imperialButton.disabled=true;
    createtableBtn.disabled=true;
 
-    createTable(city,roundedtempImperial,roundedwindImperial,descDays);
+    createTable(city,roundedtempImperial,roundedwindImperial,descDays,myTable,table);
 
 })
 
 
+}
+
+function createButtons(){
+let newButton=document.createElement("button");
+newButton.setAttribute("class","add1");
+newButton.setAttribute("id","buttons");
+newButton.innerHTML = "Add Event";
+document.body.appendChild(newButton);
+
+let addBtn=document.querySelector(".add1");
+addBtn.addEventListener("click",function() {
+    addnewRow(myTable,table);
+    addBtn.disabled=true;
+
+
+})
 
 }
 
-
-
-
-   
-              
-
- 
-
-
-
-
-
     let apibtn=document.querySelector(".btn");
     apibtn.addEventListener("click",function() {
-    fetchRestAPI(document.querySelector(".form").value)
+    fetchRestAPI(document.querySelector(".form").value);
 
 
-});
+})
 let enterKey=document.querySelector(".form");
 enterKey.addEventListener("keyup",function(event) {
     if(event.key =="Enter"){
         fetchRestAPI(document.querySelector(".form").value);
     }
 })
-// function reload(){
-//     var container = document.getElementById("body");
-//     var content = container.innerHTML;
-//     container.innerHTML= content; 
-    
-//    //this line is to watch the result in console , you can remove it later	
-//     console.log("Refreshed"); 
-// }
+
