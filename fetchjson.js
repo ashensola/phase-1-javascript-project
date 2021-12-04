@@ -1,7 +1,12 @@
 
 
 function fetchRestAPI(cityName){
-    serverAddress=`http://localhost:3000/forecast?city=${cityName}`
+    let defaultcityName=cityName.toLowerCase();
+    console.log(defaultcityName);
+    let newcityName;
+    newcityName=defaultcityName.charAt(0).toUpperCase() + defaultcityName.slice(1);
+    console.log(newcityName);
+    serverAddress=`http://localhost:3000/forecast?city=${newcityName}`
 
     fetch(serverAddress)
     .then(response=>response.json())  
@@ -12,17 +17,22 @@ function fetchRestAPI(cityName){
 
 
 function createTable(city,tempDays,windDays,descDays){
-    myTable=document.querySelector("#table")
+    myTable=document.querySelector("#table-container")
     let headers=[city,'Day 1', 'Day 2', 'Day 3']
     
-    let createtableBtn=document.querySelector(".btn1");
-    createtableBtn.addEventListener("click",function() {
-        createtableBtn.disabled=true;
+    // let createtableBtn=document.querySelector(".btn1");
+    // createtableBtn.addEventListener("click",function() {
+        //createtableBtn.disabled=true;
      //   resettableButton();
-    
+
     let table=document.createElement('table');
     let headerRow=document.createElement('tr');
+////let resetbtn=document.querySelector(".btn2")
+//resetbtn.addEventListener("click",function() {
 
+  //remove(table);
+
+//})
     headers.forEach(headerElement => {
         let header = document.createElement('th');
         let textNode=document.createTextNode(headerElement);
@@ -79,28 +89,18 @@ windDays.forEach(windDay=> {
         myTable.appendChild(table);
         
         })
-let resetbtn=document.querySelector(".btn");
-resetbtn.addEventListener("click",function() {
-    createtableBtn.disabled=false; //
-    remove(myTable)
-    
-})
 
 
-});
+//});
 
 
 
 
 }
 
-function addverticleHeaders(){
 
-
-
-}
 function collectapiData(restapiData){
- let tempDays=[]; let windDays=[]; let descDays=[];
+ let tempDays=[]; let windDays=[]; let descDays=[]; 
 let city=   restapiData[0].city;
    for(i=0;i<restapiData.length; i++){
        
@@ -110,12 +110,84 @@ windDays[i]= restapiData[i].wind; //where windDays[0] = day 1 and so on
 
 descDays[i]= restapiData[i].description; //where descDays[0] = day 1 and so on
 
+
 }
+////convert temperature metric to imperial////
+let newtempArr=[];  let newwindArr=[]; let roundedwindImperial=[];let roundedtempImperial=[];
+
+for (i=0;i <tempDays.length;i++){
+    newtempArr[i] = tempDays[i].replace(/\D/g,'');
+    } 
+    
+    
+    const str2numTemp = newtempArr.map(str => {
+      return Number(str);
+    });
+    //console.log(str2numTemp)
+    
+    const tempImperial = str2numTemp.map(x => 
+        ((x * 9/5) + 32));
+    
+    for (i=0;i <tempDays.length;i++){
+        roundedtempImperial[i]=Math.round(tempImperial[i]);  
+        roundedtempImperial[i]=tempImperial[i] +" ⁰F";
+         }  
+        
+    console.log(roundedtempImperial)
+     
+    
+    ////convert wind metric to imperial////
+    for (i=0;i <windDays.length;i++){
+        newwindArr[i] = windDays[i].replace(/\D/g,'');
+        } 
+        
+        
+        const str2numWind = newwindArr.map(str => {
+          return Number(str);
+        });
+        //console.log(str2numWind)
+        
+        const windImperial = str2numWind.map(x => 
+            ((x/1.609)));
+        
+        for (i=0;i <windDays.length;i++){
+            roundedwindImperial[i]=Math.round(windImperial[i]);    
+            roundedwindImperial[i]=roundedwindImperial[i] + " mph";  
+
+         }  
+        
+            console.log(roundedwindImperial)
+
+ let createtableBtn=document.querySelector(".btn1");
+ let imperialButton=document.querySelector(".imperial");
+
+createtableBtn.addEventListener("click",function() {
+createtableBtn.disabled=true;
+imperialButton.disabled=true;
+
 createTable(city,tempDays,windDays,descDays);
 
+})
+
+imperialButton.addEventListener("click",function() {
+   imperialButton.disabled=true;
+   createtableBtn.disabled=true;
+
+    createTable(city,roundedtempImperial,roundedwindImperial,descDays);
+
+})
+
+
+
 }
 
 
+
+
+   
+              
+
+ 
 
 
 
@@ -127,8 +199,17 @@ createTable(city,tempDays,windDays,descDays);
 
 
 });
-
-function remove(el) {
-    var element = el;
-    element.remove();
-  }
+let enterKey=document.querySelector(".form");
+enterKey.addEventListener("keyup",function(event) {
+    if(event.key =="Enter"){
+        fetchRestAPI(document.querySelector(".form").value);
+    }
+})
+// function reload(){
+//     var container = document.getElementById("body");
+//     var content = container.innerHTML;
+//     container.innerHTML= content; 
+    
+//    //this line is to watch the result in console , you can remove it later	
+//     console.log("Refreshed"); 
+// }
