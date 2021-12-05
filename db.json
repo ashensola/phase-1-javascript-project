@@ -1,0 +1,76 @@
+{
+  "forecast": [
+    {
+      "id": 1,
+      "city": "London",
+      "temperature": "+9 °C",
+      "wind": "24 km/h",
+      "description": "Partly cloudy",
+      "event1": "tokyo"
+    },
+    {
+      "id": 2,
+      "city": "London",
+      "temperature": "+4 °C",
+      "wind": "21 km/h",
+      "description": "Sunny",
+      "event1": "tokyo"
+    },
+    {
+      "id": 3,
+      "city": "London",
+      "temperature": "3 °C",
+      "wind": "16 km/h",
+      "description": "Thunderstorms",
+      "event1": "tokyo"
+    },
+    {
+      "city": "Tokyo",
+      "temperature": "16 °C",
+      "wind": "72 km/h",
+      "description": "Cloudy",
+      "event1": "tokyo",
+      "id": 4
+    },
+    {
+      "id": 5,
+      "city": "Tokyo",
+      "temperature": "12 °C",
+      "wind": "30 km/h",
+      "description": "Clear",
+      "event1": "tokyo"
+    },
+    {
+      "id": 6,
+      "city": "Tokyo",
+      "temperature": "15 °C",
+      "wind": "35 km/h",
+      "description": "Light Rain",
+      "event1": "tokyo"
+    },
+    {
+      "id": 7,
+      "city": "Sydney",
+      "temperature": "25 °C",
+      "wind": "33 km/h",
+      "description": "Rain",
+      "event1": "tokyo"
+    },
+    {
+      "id": 8,
+      "city": "Sydney",
+      "temperature": "19 °C",
+      "wind": "17 km/h",
+      "description": "Sunny",
+      "event1": "tokyo"
+    },
+    {
+      "id": 9,
+      "city": "Sydney",
+      "temperature": "23 °C",
+      "wind": "27 km/h",
+      "description": "Thunderstorms",
+      "event1": "tokyo"
+    }
+  ]
+}
