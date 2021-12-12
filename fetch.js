@@ -113,10 +113,30 @@ function searchFunction() {
 
 
 let form = document.querySelector(".form");
+
+
+
 form.addEventListener("keyup", function (event) {
     if (event.key == "Enter") {
         searchLocation();
     }
 });
 
+
+
 searchFunction();
+
+let loginButton = document.querySelector(".login");
+
+loginButton.addEventListener("click", function()
+{
+    login();
+    // console.log("clicked");
+})
+
+let logoutButton = document.querySelector(".logout")
+logoutButton.addEventListener("click", function()
+{
+    logout();
+    console.log("clicked");
+})
