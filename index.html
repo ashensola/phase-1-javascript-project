@@ -4,9 +4,14 @@
       <head>
         <title>Weather Report</title>
       <link rel="stylesheet" href="style.css">
-  <script src="fetch.js" defer></script>    <!-- "defer" required for addeventListener to work -->
-  <script src="fetchjson.js" defer ></script>
-              <script src="https://kit.fontawesome.com/4a9ee9bb34.js" crossorigin="anonymous"></script>
+      <script src="https://cdn.auth0.com/js/auth0-spa-js/1.13/auth0-spa-js.production.js"></script>
+      <script src="js/app.js" defer></script>
+
+      <script src="fetch.js" defer></script>    <!-- "defer" required for addeventListener to work -->
+      <script src="fetchjson.js" defer ></script>
+      <script src="https://kit.fontawesome.com/4a9ee9bb34.js" crossorigin="anonymous"></script>
+    <!-- This is for auth0 -->
+    
               </head>
               
       <body id="body">
@@ -14,6 +19,9 @@
       <header id="header">
         <div class="wrapper">
               <h1>Welcome to the Weather Page!</h1>
+              <button class="login" id="auth">Login  </button>
+              <button class="logout" id="auth">Logout  </button>
+
             </div>
         </header> 
 
@@ -26,10 +34,11 @@
         <input type="text" id="search" class="form" placeholder="location" maxlength="49" />
         <a id="search-btn" href="#" ></a>
           <button class="btn"><i class="fas fa-search"></i></button>
+          <span class="hidden" id="gated-content">
           <button class="btn1" id="buttons">Metric Forecast</button>
           <a id="buttons" href="javascript:window.location.reload(true)">Reset</a>
           <button class="imperial" id="buttons">Imperial Forecast  </button>
-
+          </span>
     
       </div>
 
@@ -48,6 +57,22 @@
 
 
   </div>
+
+  <!-- <div class="hidden" id="gated-content">
+    <p>
+      You're seeing this content because you're currently
+      <strong>logged in</strong>.
+    </p>
+    <label>
+      Access token:
+      <pre id="ipt-access-token"></pre>
+    </label>
+    <label>
+      User profile:
+      <pre id="ipt-user-profile"></pre>
+    </label>
+  </div> -->
+  
 
       </body>
 
